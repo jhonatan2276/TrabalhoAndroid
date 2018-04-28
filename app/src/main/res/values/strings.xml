@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Trabalho Android</string>
+
+    <!-- Tela de Login -->
+    <string name="btnLoginEntrar">Teste de Botão</string>
+
+    <!-- Tela Principal -->
+    <string name="txtPrincipalTexto">TESTE... Em Desenvolvimento</string>
+
+    <!-- Gerenciador Web -->
+    <string name="error_connection">Sem Acesso a Internet</string>
+    <string name="error_request">Erro de Requisição</string>
+    <string name="txtPrincipalUsuario">USUÁRIO</string>
+
+    <!-- Gerenciador Web Usuario -->
+    <string name="msg_erro_resposta_invalida">Reposta do Servidor Inválida</string>
+
+</resources>
