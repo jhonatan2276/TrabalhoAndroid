@@ -10,8 +10,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
+
 import br.edu.unidavi.trabalhoandroid.R;
+import br.edu.unidavi.trabalhoandroid.eventbus.Carro;
 import br.edu.unidavi.trabalhoandroid.eventbus.Mensagem;
+import br.edu.unidavi.trabalhoandroid.web.GerenciadorWebCarros;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -21,6 +25,9 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        GerenciadorWebCarros gerenciadorWebCarros = new GerenciadorWebCarros(this, "todos");
+        gerenciadorWebCarros.execute();
 
     }
 
@@ -46,5 +53,21 @@ public class PrincipalActivity extends AppCompatActivity {
         TextView txtUsuario;
         txtUsuario = findViewById(R.id.txtUsuario);
         txtUsuario.setText(this.nome);
+    }
+
+    @Subscribe
+    public void onEvent (List<Carro> carroList) {
+        int i;
+
+        for (i = 0; i < carroList.size(); i++) {
+            Toast.makeText(this, "Posição: "+Integer.toString(i), Toast.LENGTH_SHORT).show();
+        }
+        Log.d("EVENTO ======= ", "TESTE DE CARROS");
+
+        TextView txtStatus;
+        Carro meuCarro = carroList.get(3);
+
+        txtStatus = findViewById(R.id.txtStatus);
+        txtStatus.setText(meuCarro.getModelo());
     }
 }

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logar () {
-        /*//Salva (no SharedPreferences) os dados digitados no campo Nome
+        //Salva (no SharedPreferences) os dados digitados no campo Nome
         EditText edtLoginNome = findViewById(R.id.edtLoginNome);
 
         Session session = new Session(this);
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent login = new Intent(this, PrincipalActivity.class);
         startActivity(login);
-        finish();*/
+        finish();
 
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario(this, "admin", "admin");
         gerenciadorUsuario.execute();
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     @Subscribe
     public void onEvent(Usuario usuario){
 
-        Log.d("TEXTO", "TESTE DE EVENTBUS");
+        Log.d("TEXTO", "EVENTO DE USUÁRIO");
         String texto = usuario.getNome()+" - "+usuario.getEmail();
         Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
 

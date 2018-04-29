@@ -17,18 +17,18 @@ import br.edu.unidavi.trabalhoandroid.eventbus.Carro;
 
 public class GerenciadorWebCarros extends GerenciadorWeb {
 
-    private static final String SERVICE_NAME = "carros";
-    private String id;
+    private static final String SERVICE_NAME = "carro";
+    private String parametro;
 
-    public GerenciadorWebCarros (Context context, String id) {
+    public GerenciadorWebCarros (Context context, String parametro) {
         super(context, SERVICE_NAME);
-        this.id = id;
+        this.parametro = parametro;
     }
 
     @Override
     public String getRequestBody() {
         Map<String,String> mapaItem = new HashMap<>();
-        mapaItem.put("id", id);
+        mapaItem.put("parametro", parametro);
 
         JSONObject requestJson = new JSONObject(mapaItem);
 
@@ -44,19 +44,19 @@ public class GerenciadorWebCarros extends GerenciadorWeb {
             JSONArray jsonArray = new JSONArray(response);
 
             for(int index= 0; index < jsonArray.length(); index++){
-                JSONObject memeJSON = (JSONObject) jsonArray.get(index);
+                JSONObject responseAsJSON = (JSONObject) jsonArray.get(index);
                 Carro carro = new Carro();
-                carro.setImagem(memeJSON.getString("imagem"));
-                carro.setMarca(memeJSON.getString("marca"));
-                carro.setModelo(memeJSON.getString("modelo"));
-                carro.setAno(memeJSON.getString("ano"));
+                carro.setMarca(responseAsJSON.getString("marca"));
+                carro.setModelo(responseAsJSON.getString("modelo"));
+                carro.setAno(responseAsJSON.getString("ano"));
+                carro.setImagem(responseAsJSON.getString("imagem"));
                 carroList.add(carro);
             }
 
             EventBus.getDefault().post(carroList);
 
         } catch (JSONException e) {
-            EventBus.getDefault().post(new Error(getContext().getString(R.string.error_request)));
+            EventBus.getDefault().post(new Error(getContext().getString(R.string.msg_erro_resposta_invalida)));
         }
     }
 }
