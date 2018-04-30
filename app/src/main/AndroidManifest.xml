@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitys.PrincipalActivity"></activity>
+        <activity android:name=".activitys.PrincipalActivity" />
+        <activity android:name=".activitys.EstruturaItemLista"></activity>
     </application>
 
 </manifest>
