@@ -1,0 +1,6 @@
+- Layout Tela Principal;
+- Layout Tela Detalhe;
+- Tela de Informações;
+- Função Memorizar Usuário;
+- Bordas Arredondadas (Se der tempo);
+- Tela Invertida (Se der tempo);

@@ -1,39 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context="br.edu.unidavi.trabalhoandroid.activitys.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/log_lay01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/log_imgLogo"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:scaleType="center"
+        android:src="@drawable/logo"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/log_txtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_imgLogo"
+        android:layout_marginTop="2dp"
+        android:text="@string/log_txtUsuario" />
 
     <EditText
         android:id="@+id/log_edtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_below="@id/log_txtUsuario"
+        android:layout_marginTop="2dp"
         android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/log_txtSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_edtNome"
+        android:layout_marginTop="6dp"
+        android:text="@string/log_txtSenha" />
 
     <EditText
         android:id="@+id/log_edtSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/log_edtNome"
-        android:layout_marginTop="16dp"
-        android:inputType="number" />
+        android:layout_below="@id/log_txtSenha"
+        android:layout_marginTop="2dp"
+        android:inputType="numberPassword" />
 
     <Switch
-        android:id="@+id/log_swt_MemorizarUsuario"
-        android:layout_width="match_parent"
+        android:id="@+id/log_swtMemorizaUsuario"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/swt_MemorizaUsuario"
-        />
+        android:text="@string/log_swtMemorizaUsuario"
+        android:layout_below="@id/log_edtSenha"
+        android:layout_marginTop="8dp"
+        android:checked="true" />
 
     <Button
         android:id="@+id/log_btnEntrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/log_edtSenha"
-        android:text="@string/btnLoginEntrar"
-        android:layout_marginTop="20dp" />
+        android:layout_below="@id/log_swtMemorizaUsuario"
+        android:text="@string/log_btnEntrar"
+        android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/log_lay02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_lay01"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/log_txtSobre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/log_txtSobre"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/log_txtSobreNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/log_txtSobre"
+            android:layout_marginTop="2dp"
+            android:text="@string/log_txtSobreNome"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/log_btnMaisInformacoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/log_txtSobreNome"
+            android:text="@string/log_btnMaisInformacoes"
+            android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

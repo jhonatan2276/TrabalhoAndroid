@@ -1,3 +1,0 @@
-- Renomear Recycler (recycler_meme)
-- Imagens
-- Toda parte Básica Funcionando
