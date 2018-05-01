@@ -7,15 +7,33 @@
     tools:context="br.edu.unidavi.trabalhoandroid.activitys.LoginActivity">
 
     <EditText
-        android:id="@+id/edtLoginNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnLoginEntrar"
+        android:id="@+id/log_edtNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtLoginNome"
-        android:text="@string/btnLoginEntrar" />
+        android:layout_marginTop="16dp"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/log_edtSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_edtNome"
+        android:layout_marginTop="16dp"
+        android:inputType="number" />
+
+    <Switch
+        android:id="@+id/log_swt_MemorizarUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/swt_MemorizaUsuario"
+        />
+
+    <Button
+        android:id="@+id/log_btnEntrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_edtSenha"
+        android:text="@string/btnLoginEntrar"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>

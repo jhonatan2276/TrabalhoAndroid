@@ -2,25 +2,26 @@ package br.edu.unidavi.trabalhoandroid.dados;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import br.edu.unidavi.trabalhoandroid.R;
-import br.edu.unidavi.trabalhoandroid.activitys.EstruturaItemLista;
+import br.edu.unidavi.trabalhoandroid.activitys.CarroDetalheActivity;
 import br.edu.unidavi.trabalhoandroid.eventbus.Carro;
 
 public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
 
     public List<Carro> carroLista;
-    Context context;
+    private Context context;
 
     public CarroAdapter (List<Carro> carroLista, Context context) {
         this.carroLista = carroLista;
@@ -45,19 +46,30 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
         estruturaItemLista.modelo.setText(carro.getModelo());
         estruturaItemLista.ano.setText(carro.getAno());
 
-        //ESTRUTURA DE IMAGEM E TOQUE
-        //Picasso.with(context).load(myMeme.getPhotoUrl()).into(holder.thumbnail);
+        //IMAGEM
+        Picasso.with(context)
+                .load(carro.getImagem())
+                .into(estruturaItemLista.imagem);
 
-        /*estruturaItemLista.itemView.setOnTouchListener(new View.OnTouchListener() {
+        //AO CLICAR NO ITEM
+        estruturaItemLista.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(myMeme.getUrl()));
-                context.startActivity(webIntent);
+            public void onClick(View view) {
+                String teste = carro.getModelo();
+                Log.d("MODELO ==== ", teste);
 
-                return true;
+                Carro carroDet = new Carro();
+                carroDet.setMarca(carro.getMarca());
+                carroDet.setModelo(carro.getModelo());
+                carroDet.setAno(carro.getAno());
+                carroDet.setImagem(carro.getImagem());
+                EventBus.getDefault().postSticky(carroDet);
+
+                final Intent carroDetalhe;
+                carroDetalhe =  new Intent(context, CarroDetalheActivity.class);
+                context.startActivity(carroDetalhe);
             }
-        });*/
+        });
     }
 
     @Override

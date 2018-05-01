@@ -13,13 +13,13 @@ import java.util.Map;
 import br.edu.unidavi.trabalhoandroid.R;
 import br.edu.unidavi.trabalhoandroid.eventbus.Usuario;
 
-public class GerenciadorUsuario extends GerenciadorWeb {
+public class GerenciadorWebUsuario extends GerenciadorWeb {
     private static final String SERVICE_NAME = "usuario";
 
     private String nome;
     private String senha;
 
-    public GerenciadorUsuario (Context context, String nome, String senha) {
+    public GerenciadorWebUsuario(Context context, String nome, String senha) {
         super(context, SERVICE_NAME);
         this.nome = nome;
         this.senha = senha;

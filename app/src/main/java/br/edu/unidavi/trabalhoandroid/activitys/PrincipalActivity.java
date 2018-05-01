@@ -36,7 +36,7 @@ public class PrincipalActivity extends AppCompatActivity {
         GerenciadorWebCarros gerenciadorWebCarros = new GerenciadorWebCarros(this, "todos");
         gerenciadorWebCarros.execute();
 
-        recyclerView = findViewById(R.id.recycler_memes);
+        recyclerView = findViewById(R.id.recycler_carros);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
@@ -78,13 +78,13 @@ public class PrincipalActivity extends AppCompatActivity {
         Log.d("EVENTO ======= ", "TESTE DE CARROS");
 
         TextView txtStatus;
-        Carro meuCarro = carroLista.get(0);
+        Carro carro = carroLista.get(0);
 
         txtStatus = findViewById(R.id.txtStatus);
-        txtStatus.setText(meuCarro.getModelo());
+        txtStatus.setText(carro.getModelo());
 
 
-        findViewById(R.id.recycler_memes).setVisibility(View.VISIBLE);
+        findViewById(R.id.recycler_carros).setVisibility(View.VISIBLE);
 
         carroAdapter.carroLista = carroLista;
         carroAdapter.notifyDataSetChanged();

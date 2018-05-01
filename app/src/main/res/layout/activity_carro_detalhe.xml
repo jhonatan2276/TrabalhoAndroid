@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.CarroDetalheActivity">
+
+    <ImageView
+        android:id="@+id/det_imagem_icone"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/icone_carro"
+        />
+
+    <TextView
+        android:id="@+id/det_txtMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/det_imagem_icone"
+        tools:text="Marca"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/det_txtModelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_txtMarca"
+        android:layout_toRightOf="@id/det_imagem_icone"
+        tools:text="Modelo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/det_txtAno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_txtModelo"
+        android:layout_toRightOf="@id/det_imagem_icone"
+        tools:text="Ano"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/det_btnVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/det_btnVoltar"
+        android:layout_marginBottom="8dp" />
+
+</RelativeLayout>

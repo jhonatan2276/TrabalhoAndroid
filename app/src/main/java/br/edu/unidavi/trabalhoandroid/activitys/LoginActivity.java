@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
@@ -17,23 +16,29 @@ import br.edu.unidavi.trabalhoandroid.R;
 import br.edu.unidavi.trabalhoandroid.dados.Session;
 import br.edu.unidavi.trabalhoandroid.eventbus.Mensagem;
 import br.edu.unidavi.trabalhoandroid.eventbus.Usuario;
-import br.edu.unidavi.trabalhoandroid.web.GerenciadorUsuario;
+import br.edu.unidavi.trabalhoandroid.web.GerenciadorWebUsuario;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private String nome;
+    private String senha;
+    private EditText log_edtNome;
+    private EditText log_edtSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        log_edtNome = findViewById(R.id.log_edtNome);
+        log_edtSenha = findViewById(R.id.log_edtSenha);
+        Button log_btnEntrar = findViewById(R.id.log_btnEntrar);
+
         //Resgata (do SharedPreferences - se houver) dados salvos do Usuário
         Session session = new Session(this);
-        EditText edtLoginNome = findViewById(R.id.edtLoginNome);
-        edtLoginNome.setText(session.retornaUsuarioSession());
+        log_edtNome.setText(session.retornaUsuarioSession());
 
-        Button btnLoginEntrar = findViewById(R.id.btnLoginEntrar);
-
-        btnLoginEntrar.setOnClickListener(new View.OnClickListener() {
+        log_btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logar();
@@ -42,23 +47,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logar () {
-        //Salva (no SharedPreferences) os dados digitados no campo Nome
-        EditText edtLoginNome = findViewById(R.id.edtLoginNome);
+        //Salva no SharedPreferences) os dados digitados no campo Nome
+        log_edtNome = findViewById(R.id.log_edtNome);
 
         Session session = new Session(this);
-        session.salvaUsuarioSession(edtLoginNome.getText().toString());
+        session.salvaUsuarioSession(log_edtNome.getText().toString());
 
         //Passa o texto do campo
         Mensagem mensagem = new Mensagem();
-        mensagem.setMensagem(edtLoginNome.getText().toString());
+        mensagem.setMensagem(log_edtNome.getText().toString());
         EventBus.getDefault().postSticky(mensagem);
 
-        Intent login = new Intent(this, PrincipalActivity.class);
-        startActivity(login);
+        Intent principal = new Intent(this, PrincipalActivity.class);
+        startActivity(principal);
         finish();
 
-        GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario(this, "admin", "admin");
-        gerenciadorUsuario.execute();
+        nome = log_edtNome.getText().toString();
+        senha = log_edtSenha.getText().toString();
+
+        GerenciadorWebUsuario gerenciadorWebUsuario = new GerenciadorWebUsuario(this, nome, senha);
+        gerenciadorWebUsuario.execute();
     }
 
     @Override

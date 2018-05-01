@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitys.PrincipalActivity" />
-        <activity android:name=".activitys.EstruturaItemLista"></activity>
+        <activity android:name=".dados.EstruturaItemLista" />
+        <activity android:name=".activitys.CarroDetalheActivity"></activity>
     </application>
 
 </manifest>
