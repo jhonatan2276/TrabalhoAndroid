@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_highlight_off_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_chevron_right_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,10 +33,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="imageAsset" value="D:\Downloads\logo_unidavi.png" />
-                                      <entry key="outputName" value="logo_unidavi" />
-                                      <entry key="themeColor" value="ff0000" />
+                                      <entry key="outputName" value="icone_seta" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="070000" />
                                     </map>
                                   </option>
                                 </PersistentState>

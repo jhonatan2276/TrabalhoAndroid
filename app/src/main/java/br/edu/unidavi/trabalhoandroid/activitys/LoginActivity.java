@@ -20,7 +20,6 @@ import br.edu.unidavi.trabalhoandroid.eventbus.Usuario;
 import br.edu.unidavi.trabalhoandroid.web.GerenciadorWebUsuario;
 
 public class LoginActivity extends AppCompatActivity {
-
     private String nome;
     private String senha;
     private EditText log_edtNome;
@@ -68,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
 
         GerenciadorWebUsuario gerenciadorWebUsuario = new GerenciadorWebUsuario(this, nome, senha);
         gerenciadorWebUsuario.execute();
+
+
     }
 
     @Override
@@ -82,12 +83,11 @@ public class LoginActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe
+    /*@Subscribe
     public void onEvent(Usuario usuario){
+        Toast.makeText(this, "Bem Vindo "+usuario.getNome(), Toast.LENGTH_SHORT).show();
 
-        Log.d("TEXTO", "EVENTO DE USUÁRIO");
-        String texto = usuario.getNome()+" - "+usuario.getEmail();
-        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
+        Log.d("EVENTO ======= ", "RECEBENDO USUÁRIO");
 
         //hideDialog();
 
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         session.savePhotoUrlInSession(user.getProfile_img_url());
         session.saveTokenInSession(user.getToken());*/
         //goToHome();
-    }
+    //}
 
     @Subscribe
     public void onEvent(Error error){

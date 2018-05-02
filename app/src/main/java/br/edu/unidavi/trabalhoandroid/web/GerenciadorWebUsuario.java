@@ -1,7 +1,6 @@
 package br.edu.unidavi.trabalhoandroid.web;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -44,9 +43,7 @@ public class GerenciadorWebUsuario extends GerenciadorWeb {
             JSONObject responseAsJSON = new JSONObject(response);
             String nome = responseAsJSON.getString("nome");
             usuario.setNome(nome);
-            Log.d("USUARIO", nome);
             String email = responseAsJSON.getString("email");
-            Log.d("EMAIL", email);
             usuario.setEmail(email);
 
             EventBus.getDefault().post(usuario);

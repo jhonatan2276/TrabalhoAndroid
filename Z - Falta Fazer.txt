@@ -1,5 +1,6 @@
-- Layout Tela Principal;
-- Layout Tela Detalhe;
+- Layout Tela Principal - OK
+- Layout Tela Detalhe - OK
+- Observações e Preço (Colocar no JSON);
 - Tela de Informações;
 - Função Memorizar Usuário;
 - Bordas Arredondadas (Se der tempo);

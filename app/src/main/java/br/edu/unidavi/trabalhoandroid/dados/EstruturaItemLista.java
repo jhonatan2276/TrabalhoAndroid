@@ -12,14 +12,16 @@ public class EstruturaItemLista extends RecyclerView.ViewHolder {
     public TextView marca;
     public TextView modelo;
     public TextView ano;
+    public TextView preco;
     public ImageView imagem;
 
     public EstruturaItemLista (View itemView) {
         super(itemView);
 
-        marca = itemView.findViewById(R.id.txtMarca);
-        modelo = itemView.findViewById(R.id.txtModelo);
-        ano = itemView.findViewById(R.id.txtAno);
-        imagem = itemView.findViewById(R.id.imagem_icone);
+        marca = itemView.findViewById(R.id.item_txtMarca);
+        modelo = itemView.findViewById(R.id.item_txtModelo);
+        ano = itemView.findViewById(R.id.item_txtAno);
+        preco = itemView.findViewById(R.id.item_txtPreco);
+        imagem = itemView.findViewById(R.id.item_imagemIcone);
     }
 }

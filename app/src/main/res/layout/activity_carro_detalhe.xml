@@ -1,51 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="10dp"
     tools:context=".activitys.CarroDetalheActivity">
 
     <ImageView
-        android:id="@+id/det_imagem_icone"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:id="@+id/det_imagemIcone"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_margin="8dp"
+        android:padding="25dp"
         android:src="@drawable/icone_carro"
-        />
+        android:background="@drawable/borda_detalhe_imagem" />
 
     <TextView
         android:id="@+id/det_txtMarca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/det_imagem_icone"
+        android:layout_toRightOf="@id/det_imagemIcone"
         tools:text="Marca"
-        android:textSize="16sp"
-        android:layout_margin="8dp"
         android:textStyle="bold"
-        />
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:id="@+id/det_txtModelo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/det_txtMarca"
-        android:layout_toRightOf="@id/det_imagem_icone"
+        android:layout_toRightOf="@id/det_imagemIcone"
         tools:text="Modelo"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="20dp"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/det_txtAno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/det_txtModelo"
-        android:layout_toRightOf="@id/det_imagem_icone"
+        android:layout_toRightOf="@id/det_imagemIcone"
         tools:text="Ano"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="20dp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/det_txtObservacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_imagemIcone"
+        android:text="@string/det_observacoes"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/det_txtObservacoesDetalhe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/borda_lista"
+        android:layout_below="@id/det_txtObservacoes"
+        tools:text="Detalhes"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:padding="8dp"/>
 
     <Button
         android:id="@+id/det_btnVoltar"

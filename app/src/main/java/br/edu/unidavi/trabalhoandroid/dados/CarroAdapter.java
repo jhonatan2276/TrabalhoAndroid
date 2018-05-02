@@ -30,9 +30,7 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
 
     @Override
     public EstruturaItemLista onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_estrutura_item_lista, parent,false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_estrutura_item_lista, parent,false);
         EstruturaItemLista estruturaItemLista = new EstruturaItemLista(view);
 
         return estruturaItemLista;
@@ -45,6 +43,7 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
         estruturaItemLista.marca.setText(carro.getMarca());
         estruturaItemLista.modelo.setText(carro.getModelo());
         estruturaItemLista.ano.setText(carro.getAno());
+        estruturaItemLista.preco.setText("R$ 0,00");
 
         //IMAGEM
         Picasso.with(context)

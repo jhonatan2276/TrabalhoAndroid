@@ -11,15 +11,17 @@
     <string name="log_btnMaisInformacoes">Detalhes do Trabalho</string>
 
     <!-- Tela Principal -->
-    <string name="txtPrincipalTexto">TESTE... Em Desenvolvimento</string>
+    <string name="prp_txtEmail">EMAIL</string>
+    <string name="prp_txtUsuario">USUÁRIO</string>
+    <string name="prp_txtTitulo">Lista de Carros Cadastrados</string>
 
     <!-- Tela Detalhe Carro -->
     <string name="det_btnVoltar">Voltar</string>
+    <string name="det_observacoes">Observações:</string>
 
     <!-- Gerenciador Web -->
     <string name="error_connection">Sem Acesso à Internet</string>
     <string name="error_request">Você não tem permissão para acessar este serviço</string>
-    <string name="txtPrincipalUsuario">USUÁRIO</string>
     <string name="msg_erro_resposta_invalida">Reposta do Servidor Inválida</string>
 
 </resources>

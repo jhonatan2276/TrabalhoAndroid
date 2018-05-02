@@ -18,13 +18,11 @@ import br.edu.unidavi.trabalhoandroid.R;
 import br.edu.unidavi.trabalhoandroid.eventbus.Carro;
 
 public class CarroDetalheActivity extends AppCompatActivity {
-
     private Context context;
     private TextView marca;
     private TextView modelo;
     private TextView ano;
     private ImageView imagem;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class CarroDetalheActivity extends AppCompatActivity {
         marca = findViewById(R.id.det_txtMarca);
         modelo = findViewById(R.id.det_txtModelo);
         ano = findViewById(R.id.det_txtAno);
-        imagem = findViewById(R.id.det_imagem_icone);
+        imagem = findViewById(R.id.det_imagemIcone);
         det_btnVoltar = findViewById(R.id.det_btnVoltar);
 
         det_btnVoltar.setOnClickListener(new View.OnClickListener() {
