@@ -49,6 +49,8 @@ public class GerenciadorWebCarros extends GerenciadorWeb {
                 carro.setMarca(responseAsJSON.getString("marca"));
                 carro.setModelo(responseAsJSON.getString("modelo"));
                 carro.setAno(responseAsJSON.getString("ano"));
+                carro.setPreco(responseAsJSON.getString("preco"));
+                carro.setObservacoes(responseAsJSON.getString("observacoes"));
                 carro.setImagem(responseAsJSON.getString("imagem"));
                 carroList.add(carro);
             }

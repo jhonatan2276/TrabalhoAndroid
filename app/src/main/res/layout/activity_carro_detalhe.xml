@@ -24,7 +24,7 @@
         tools:text="Marca"
         android:textStyle="bold"
         android:textSize="25dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/det_txtModelo"
@@ -34,7 +34,7 @@
         android:layout_toRightOf="@id/det_imagemIcone"
         tools:text="Modelo"
         android:textSize="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/det_txtAno"
@@ -44,7 +44,19 @@
         android:layout_toRightOf="@id/det_imagemIcone"
         tools:text="Ano"
         android:textSize="20dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/det_txtPreco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_txtAno"
+        android:layout_toRightOf="@id/det_imagemIcone"
+        tools:text="Preço"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/det_txtObservacoes"
@@ -52,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/det_imagemIcone"
         android:text="@string/det_observacoes"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginTop="10dp" />
 

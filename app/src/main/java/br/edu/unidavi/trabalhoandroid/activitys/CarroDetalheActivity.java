@@ -22,6 +22,8 @@ public class CarroDetalheActivity extends AppCompatActivity {
     private TextView marca;
     private TextView modelo;
     private TextView ano;
+    private TextView preco;
+    private TextView observacoes;
     private ImageView imagem;
 
     @Override
@@ -34,6 +36,8 @@ public class CarroDetalheActivity extends AppCompatActivity {
         marca = findViewById(R.id.det_txtMarca);
         modelo = findViewById(R.id.det_txtModelo);
         ano = findViewById(R.id.det_txtAno);
+        preco = findViewById(R.id.det_txtPreco);
+        observacoes = findViewById(R.id.det_txtObservacoesDetalhe);
         imagem = findViewById(R.id.det_imagemIcone);
         det_btnVoltar = findViewById(R.id.det_btnVoltar);
 
@@ -65,6 +69,8 @@ public class CarroDetalheActivity extends AppCompatActivity {
         marca.setText(carro.getMarca());
         modelo.setText(carro.getModelo());
         ano.setText(carro.getAno());
+        preco.setText(carro.getPreco());
+        observacoes.setText(carro.getObservacoes());
 
         Picasso.with(context)
                 .load(carro.getImagem())

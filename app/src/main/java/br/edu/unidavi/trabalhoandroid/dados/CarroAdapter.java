@@ -43,7 +43,7 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
         estruturaItemLista.marca.setText(carro.getMarca());
         estruturaItemLista.modelo.setText(carro.getModelo());
         estruturaItemLista.ano.setText(carro.getAno());
-        estruturaItemLista.preco.setText("R$ 0,00");
+        estruturaItemLista.preco.setText(carro.getPreco());
 
         //IMAGEM
         Picasso.with(context)
@@ -54,13 +54,12 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
         estruturaItemLista.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String teste = carro.getModelo();
-                Log.d("MODELO ==== ", teste);
-
                 Carro carroDet = new Carro();
                 carroDet.setMarca(carro.getMarca());
                 carroDet.setModelo(carro.getModelo());
                 carroDet.setAno(carro.getAno());
+                carroDet.setPreco(carro.getPreco());
+                carroDet.setObservacoes(carro.getObservacoes());
                 carroDet.setImagem(carro.getImagem());
                 EventBus.getDefault().postSticky(carroDet);
 

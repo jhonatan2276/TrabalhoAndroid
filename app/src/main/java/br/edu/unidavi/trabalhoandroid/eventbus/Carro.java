@@ -4,6 +4,8 @@ public class Carro {
     private String marca;
     private String modelo;
     private String ano;
+    private String preco;
+    private String observacoes;
     private String imagem;
 
     public String getMarca() {
@@ -28,6 +30,22 @@ public class Carro {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
     public String getImagem() {
