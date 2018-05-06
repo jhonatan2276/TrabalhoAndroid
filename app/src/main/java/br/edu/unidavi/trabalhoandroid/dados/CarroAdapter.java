@@ -3,7 +3,6 @@ package br.edu.unidavi.trabalhoandroid.dados;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class CarroAdapter extends RecyclerView.Adapter<EstruturaItemLista> {
 
     @Override
     public EstruturaItemLista onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_estrutura_item_lista, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.estrutura_item_lista, parent,false);
         EstruturaItemLista estruturaItemLista = new EstruturaItemLista(view);
 
         return estruturaItemLista;

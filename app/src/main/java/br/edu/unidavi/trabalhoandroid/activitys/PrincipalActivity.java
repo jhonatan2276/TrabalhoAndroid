@@ -1,16 +1,20 @@
 package br.edu.unidavi.trabalhoandroid.activitys;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,22 +22,38 @@ import java.util.List;
 import br.edu.unidavi.trabalhoandroid.R;
 import br.edu.unidavi.trabalhoandroid.dados.CarroAdapter;
 import br.edu.unidavi.trabalhoandroid.eventbus.Carro;
-import br.edu.unidavi.trabalhoandroid.eventbus.Usuario;
+import br.edu.unidavi.trabalhoandroid.eventbus.Mensagem;
 import br.edu.unidavi.trabalhoandroid.web.GerenciadorWebCarros;
 
 public class PrincipalActivity extends AppCompatActivity {
-    private TextView prp_txtUsuario;
-    private TextView prp_txtEmail;
+    private TextView txtUsuario;
+    private TextView txtEmail;
+    private ImageButton btnAtualizar;
     private RecyclerView recyclerView;
     private CarroAdapter carroAdapter;
+    private ProgressDialog msgCarregando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-        prp_txtUsuario = findViewById(R.id.prp_txtUsuario);
-        prp_txtEmail = findViewById(R.id.prp_txtEmail);
+        txtUsuario = findViewById(R.id.prp_txtUsuario);
+        txtEmail = findViewById(R.id.prp_txtEmail);
+        btnAtualizar = findViewById(R.id.prp_btnAtualizar);
+
+        btnAtualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                montaLista();
+            }
+        });
+
+        montaLista();
+    }
+
+    public void montaLista () {
+        carregando();
 
         GerenciadorWebCarros gerenciadorWebCarros = new GerenciadorWebCarros(this, "todos");
         gerenciadorWebCarros.execute();
@@ -44,6 +64,38 @@ public class PrincipalActivity extends AppCompatActivity {
 
         carroAdapter = new CarroAdapter(new ArrayList<Carro>(),this);
         recyclerView.setAdapter(carroAdapter);
+    }
+
+    public void carregando (){
+        msgCarregando = new ProgressDialog(this);
+        msgCarregando.setCancelable(false);
+        msgCarregando.setMessage("Aguarde Recebendo Dados...");
+        msgCarregando.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        msgCarregando.setProgress(0);
+        msgCarregando.show();
+    }
+
+    public void fimCarregando(){
+        if (msgCarregando != null && msgCarregando.isShowing()) {
+            msgCarregando.cancel();
+        }
+    }
+
+    public void criaAlerta(String mensagem) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setMessage(mensagem)
+                .setPositiveButton("Tentar Novamento", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        montaLista();
+                    }
+                })
+                .setNegativeButton("Sair", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+        AlertDialog alertDialog = alerta.create();
+        alertDialog.show();
     }
 
     @Override
@@ -60,31 +112,37 @@ public class PrincipalActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe
-    public void onEvent(Usuario usuario){
-        Toast.makeText(this, "Bem Vindo "+usuario.getNome(), Toast.LENGTH_SHORT).show();
-
-        prp_txtUsuario.setText(usuario.getNome());
-        prp_txtEmail.setText(usuario.getEmail());
-
-        Log.d("EVENTO ======= ", "RECEBENDO USUÁRIO");
-
-        //hideDialog();
-
-        /*Session session = new Session(this);
-        session.saveEmailInSession(user.getEmail());
-        session.savePhotoUrlInSession(user.getProfile_img_url());
-        session.saveTokenInSession(user.getToken());*/
-        //goToHome();
+    //Evento criado para fins de teste de EventBus
+    @Subscribe (sticky = true, threadMode = ThreadMode.MAIN)
+    public void onEvent(Mensagem mensagem) {
+        txtUsuario.setText(mensagem.getTexto01());
+        txtEmail.setText(mensagem.getTexto02());
     }
 
     @Subscribe
-    public void onEvent (List<Carro> carroLista) {
-        findViewById(R.id.prp_recyclerCarros).setVisibility(View.VISIBLE);
+    public void onEvent(List<Carro> carroLista) {
+        if (carroLista.size() == 0) {
+            findViewById(R.id.prp_telaPadrao).setVisibility(View.VISIBLE);
+            findViewById(R.id.prp_txtTitulo).setVisibility(View.GONE);
+            findViewById(R.id.prp_recyclerCarros).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.prp_telaPadrao).setVisibility(View.GONE);
+            findViewById(R.id.prp_txtTitulo).setVisibility(View.VISIBLE);
+            findViewById(R.id.prp_recyclerCarros).setVisibility(View.VISIBLE);
+            carroAdapter.carroLista = carroLista;
+            carroAdapter.notifyDataSetChanged();
+        }
 
-        carroAdapter.carroLista = carroLista;
-        carroAdapter.notifyDataSetChanged();
+        fimCarregando();
 
         Log.d("EVENTO ======= ", "RECEBENDO CARROS");
+    }
+
+    @Subscribe
+    public void onEvent(Error error){
+        fimCarregando();
+        criaAlerta(error.getMessage());
+
+        Log.d("ERRO =========== ", error.getMessage());
     }
 }
