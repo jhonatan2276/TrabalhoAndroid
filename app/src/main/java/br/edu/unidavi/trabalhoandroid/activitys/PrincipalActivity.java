@@ -84,7 +84,7 @@ public class PrincipalActivity extends AppCompatActivity {
     public void criaAlerta(String mensagem) {
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setMessage(mensagem)
-                .setPositiveButton("Tentar Novamento", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Tentar Novamente", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         montaLista();
                     }
